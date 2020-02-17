@@ -1,0 +1,14 @@
+@media (min-width: 35em) {
+    .row {
+      display: flex;               
+      margin-left: -.75em;          
+      margin-right: -.75em;
+     }
+   
+     .column {
+       flex: 1;                     
+       margin-right: 0.75em;        
+       margin-left: 0.75em;
+     }
+   }
+   

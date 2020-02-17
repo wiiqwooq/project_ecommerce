@@ -1,0 +1,11 @@
+:root {
+    box-sizing: border-box;
+    font-size: calc(1vw + 0.6em);
+  }
+  
+  @media (min-width: 50em) {
+    :root {
+      font-size: 1.125em;             
+    }
+  }
+  
