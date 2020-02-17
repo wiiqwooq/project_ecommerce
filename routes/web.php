@@ -28,7 +28,7 @@ Route::get('/brew', function () {
     return view('brew');
 });
 
-Route::post('/payment/make','PaymentsController@make')->name('payment.make');
-Route::get('/payment/transaction','PaymentsController@transaction')->name('payment.transaction');
+Route::post('/payment/make', 'PaymentsController@make')->name('payment.make');
+Route::get('/transaction/{id}', 'PaymentsController@transaction')->name('payment.transaction');
 
 

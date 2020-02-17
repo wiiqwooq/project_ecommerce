@@ -1,44 +1,24 @@
-<?php?>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wombat Coffee Roasters</title>
+
+
+
+    <link rel="stylesheet" href="/css/listing2.css">
+    <link rel="stylesheet" href="/css/listing3.css">
+    <link rel="stylesheet" href="/css/listing5.css">
+    <link rel="stylesheet" href="/css/listing7.css">
+    <link rel="stylesheet" href="/css/listing8.css">
+    <link rel="stylesheet" href="/css/listing9.css">
+    <link rel="stylesheet" href="/css/listing10.css">
+</head>
 <body>
-<?php
-    
-    if (isset($_GET["id"])) {
-        $transaction = $gateway->transaction()->find($_GET["id"]);
-
-        $transactionSuccessStatuses = [
-            Braintree\Transaction::AUTHORIZED,
-            Braintree\Transaction::AUTHORIZING,
-            Braintree\Transaction::SETTLED,
-            Braintree\Transaction::SETTLING,
-            Braintree\Transaction::SETTLEMENT_CONFIRMED,
-            Braintree\Transaction::SETTLEMENT_PENDING,
-            Braintree\Transaction::SUBMITTED_FOR_SETTLEMENT
-        ];
-
-        if (in_array($transaction->status, $transactionSuccessStatuses)) {
-            $header = "Sweet Success!";
-            $icon = "success";
-            $message = "Your test transaction has been successfully processed. See the Braintree API response and try again.";
-        } else {
-            $header = "Transaction Failed";
-            $icon = "fail";
-            $message = "Your test transaction has a status of " . $transaction->status . ". See the Braintree API response and try again.";
-        }
-    }
-?>
-
 <div class="wrapper">
     <div class="response container">
         <div class="content">
-            <div class="icon">
-            <img src="/images/<?php echo($icon)?>.svg" alt="">
-            </div>
-
-            <h1><?php echo($header)?></h1>
-            <section>
-                <p><?php echo($message)?></p>
-            </section>
             <section>
                 <a class="button primary back" href="/index.php">
                     <span>Test Another Transaction</span>
@@ -52,38 +32,38 @@
     <header>
         <div class="content compact">
             <a href="https://developers.braintreepayments.com" class="braintree" target="_blank">Braintree</a>
-            <h3>API Response</h3>
+            <h3>ทำรายการสำเร็จ</h3>
         </div>
     </header>
 
     <article class="content compact">
         <section>
-            <h5>Transaction</h5>
-            <table cellpadding="0" cellspacing="0">
+            <h5>ธุรกรรม</h5>
+            <table cellpadding="0" cellspacing="8">
                 <tbody>
                     <tr>
                         <td>id</td>
-                        <td><?php echo($transaction->id)?></td>
+                        <td>{{ $transaction->id }}</td>
                     </tr>
                     <tr>
                         <td>type</td>
-                        <td><?php echo($transaction->type)?></td>
+                        <td>{{ $transaction->type }}</td>
                     </tr>
                     <tr>
                         <td>amount</td>
-                        <td><?php echo($transaction->amount)?></td>
+                        <td>{{ $transaction->amount }}</td>
                     </tr>
                     <tr>
                         <td>status</td>
-                        <td><?php echo($transaction->status)?></td>
+                        <td>{{ $transaction->status }}</td>
                     </tr>
                     <tr>
                         <td>created_at</td>
-                        <td><?php echo($transaction->createdAt->format('Y-m-d H:i:s'))?></td>
+                        <td>{{ $transaction->createdAt->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <td>updated_at</td>
-                        <td><?php echo($transaction->updatedAt->format('Y-m-d H:i:s'))?></td>
+                        <td>{{ $transaction->updatedAt->format('Y-m-d H:i:s') }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -96,77 +76,77 @@
                 <tbody>
                     <tr>
                         <td>token</td>
-                        <td><?php echo($transaction->creditCardDetails->token)?></td>
+                        <td>{{ $transaction->creditCardDetails->token }}</td>
                     </tr>
                     <tr>
                         <td>bin</td>
-                        <td><?php echo($transaction->creditCardDetails->bin)?></td>
+                        <td>{{ $transaction->creditCardDetails->bin }}</td>
                     </tr>
                     <tr>
                         <td>last_4</td>
-                        <td><?php echo($transaction->creditCardDetails->last4)?></td>
+                        <td>{{ $transaction->creditCardDetails->last4 }}</td>
                     </tr>
                     <tr>
                         <td>card_type</td>
-                        <td><?php echo($transaction->creditCardDetails->cardType)?></td>
+                        <td>{{ $transaction->creditCardDetails->cardType }}</td>
                     </tr>
                     <tr>
                         <td>expiration_date</td>
-                        <td><?php echo($transaction->creditCardDetails->expirationDate)?></td>
+                        <td>{{ $transaction->creditCardDetails->expirationDate }}</td>
                     </tr>
                     <tr>
                         <td>cardholder_name</td>
-                        <td><?php echo($transaction->creditCardDetails->cardholderName)?></td>
+                        <td>{{ $transaction->creditCardDetails->cardholderName }}</td>
                     </tr>
                     <tr>
                         <td>customer_location</td>
-                        <td><?php echo($transaction->creditCardDetails->customerLocation)?></td>
+                        <td>{{ $transaction->creditCardDetails->customerLocation }}</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <?php if (!is_null($transaction->customerDetails->id)) : ?>
+        @if (!is_null($transaction->customerDetails->id))
         <section>
             <h5>Customer Details</h5>
             <table cellpadding="0" cellspacing="0">
                 <tbody>
                     <tr>
                         <td>id</td>
-                        <td><?php echo($transaction->customerDetails->id)?></td>
+                        <td>{{ $transaction->customerDetails->id }}</td>
                     </tr>
                     <tr>
                         <td>first_name</td>
-                        <td><?php echo($transaction->customerDetails->firstName)?></td>
+                        <td>{{ $transaction->customerDetails->firstName }}</td>
                     </tr>
                     <tr>
                         <td>last_name</td>
-                        <td><?php echo($transaction->customerDetails->lastName)?></td>
+                        <td>{{ $transaction->customerDetails->lastName }}</td>
                     </tr>
                     <tr>
                         <td>email</td>
-                        <td><?php echo($transaction->customerDetails->email)?></td>
+                        <td>{{ $transaction->customerDetails->email }}</td>
                     </tr>
                     <tr>
                         <td>company</td>
-                        <td><?php echo($transaction->customerDetails->company)?></td>
+                        <td>{{ $transaction->customerDetails->company }}</td>
                     </tr>
                     <tr>
                         <td>website</td>
-                        <td><?php echo($transaction->customerDetails->website)?></td>
+                        <td>{{ $transaction->customerDetails->website }}</td>
                     </tr>
                     <tr>
                         <td>phone</td>
-                        <td><?php echo($transaction->customerDetails->phone)?></td>
+                        <td>{{ $transaction->customerDetails->phone }}</td>
                     </tr>
                     <tr>
                         <td>fax</td>
-                        <td><?php echo($transaction->customerDetails->fax)?></td>
+                        <td>{{ $transaction->customerDetails->fax }}</td>
                     </tr>
                 </tbody>
             </table>
         </section>i
-        <?php endif; ?>
+        @endif
 
         <section>
             <p class="center small">Integrate with the Braintree SDK for a secure and seamless checkout</p>

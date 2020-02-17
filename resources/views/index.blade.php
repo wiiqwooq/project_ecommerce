@@ -9,13 +9,13 @@
 
 
 
-    <link rel="stylesheet" href="css/listing2.css">
-    <link rel="stylesheet" href="css/listing3.css">
-    <link rel="stylesheet" href="css/listing5.css">
-    <link rel="stylesheet" href="css/listing7.css">
-    <link rel="stylesheet" href="css/listing8.css">
-    <link rel="stylesheet" href="css/listing9.css">
-    <link rel="stylesheet" href="css/listing10.css">
+    <link rel="stylesheet" href="/css/listing2.css">
+    <link rel="stylesheet" href="/css/listing3.css">
+    <link rel="stylesheet" href="/css/listing5.css">
+    <link rel="stylesheet" href="/css/listing7.css">
+    <link rel="stylesheet" href="/css/listing8.css">
+    <link rel="stylesheet" href="/css/listing9.css">
+    <link rel="stylesheet" href="/css/listing10.css">
 </head>
 <body>
         <header id="header" class="page-header">
